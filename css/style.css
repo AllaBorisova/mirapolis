@@ -1,0 +1,119 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+}
+.main {
+  display: flex;
+  max-width: 320px;
+  padding-top: 50px;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+.tree {
+  margin: 0;
+  padding: 0;
+  padding-left: 20px;
+}
+.tree,
+.tree ul,
+.tree li {
+  position: relative;
+}
+
+/*styles for dotted lines*/
+.tree li::after {
+  content: "";
+  width: 20px;
+  border-top: 1px dotted #000000;
+  position: absolute;
+  z-index: -1;
+  top: 9px;
+  left: -14px;
+}
+.tree::after,
+.tree ul::after {
+  height: 100%;
+  content: "";
+  border-left: 1px dotted #000000;
+  position: absolute;
+  left: 5px;
+  top: -17px;
+  z-index: -1;
+}
+
+.tree__level {
+  position: relative;
+}
+.tree__level ul {
+  padding-left: 20px;
+  display: none;
+}
+.tree__level.open > ul {
+  display: block;
+}
+/*styles for + -*/
+.tree__level::before {
+  text-align: center;
+  display: block;
+  line-height: 7px;
+  width: 9px;
+  height: 9px;
+  content: "+";
+  border: 1px solid #000000;
+  position: absolute;
+  top: 4px;
+  left: -18px;
+  font-size: 11px;
+  cursor: pointer;
+  background-color: #ffffff;
+  z-index: 2;
+}
+.tree__level.open::before {
+  content: "-";
+  justify-content: center;
+}
+
+.no-marker::marker {
+  display: none;
+}
+.no-marker {
+  list-style-type: none;
+}
+
+.folder {
+  display: flex;
+  padding-bottom: 5px;
+  flex-wrap: wrap;
+}
+.folder::before {
+  content: url(../img/folder-solid.svg);
+  width: 15px;
+  display: block;
+  background: #ffffff;
+  margin-right: 5px;
+}
+.open > .folder::before {
+  content: url(../img/folder-open-solid.svg);
+}
+
+.file {
+  display: flex;
+  padding-bottom: 5px;
+  flex-wrap: wrap;
+}
+.file::before {
+  content: url(../img/file-regular.svg);
+  width: 13px;
+  display: block;
+  background: #ffffff;
+  margin-right: 5px;
+  position: relative;
+  z-index: 2;
+}
