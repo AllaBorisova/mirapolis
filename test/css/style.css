@@ -92,6 +92,9 @@ body {
   padding-bottom: 5px;
   flex-wrap: wrap;
 }
+.tree__level > .folder {
+  cursor: pointer;
+}
 .folder::before {
   content: url(../img/folder-solid.svg);
   width: 15px;
